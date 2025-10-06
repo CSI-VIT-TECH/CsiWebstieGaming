@@ -1,138 +1,95 @@
-// 'use client'
-// import React, { useEffect, useState, useRef } from 'react'
-// import gsap from 'gsap'
-// import { ScrollTrigger } from 'gsap/ScrollTrigger'
-// import { useGSAP } from '@gsap/react'
+'use client'
+import React from 'react'
+import Image from 'next/image'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-// const AboutUs = () => {
-//   const [svgContent, setSvgContent] = useState('')
-//   const [svgLoaded, setSvgLoaded] = useState(false)
-//   const containerRef = useRef(null)
+const AboutUs = () => {
+  gsap.registerPlugin(ScrollTrigger)
 
-//   gsap.registerPlugin(ScrollTrigger)
+  useGSAP(() => {
+    gsap.to('.pin', {
+        width:"100vw",
+        height:"100vh", // zoom effect
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".main",
+        scrub: true,
+        pin: true,
+        start: "center center",
+        markers:"true",
+        end: "+=1000",
+      },
+    })
+  })
 
-//   useEffect(() => {
-//     async function loadSVG() {
-//       try {
-//         const response = await fetch('/Home/Aboutus/container.svg')
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! status: ${response.status}`)
-//         }
-//         const svg = await response.text()
-//         setSvgContent(svg)
-//         setSvgLoaded(true)
-//         console.log('SVG loaded successfully')
-//       } catch (error) {
-//         console.error('Error loading SVG:', error)
-//       }
-//     }
-//     loadSVG()
-//   }, [])
+  return (
+    <div className="min-h-screen bg-white relative">
+      {/* Main content */}
+      <div className="h-[90vh] main relative flex items-center flex-col justify-center">
+        <h1 className="text-center mt-5 text-[4rem] font-bold font-orbiton">
+          About Us
+        </h1>
 
-//   useGSAP(() => {
-//     if (!svgLoaded || !containerRef.current) return
+        <p className="text-center text-[1.5rem] leading-relaxed max-w-5xl mx-auto px-4">
+          <span className="inline-block relative w-[100px] h-[70px] mx-4 align-middle rounded-full overflow-hidden">
+            <Image
+              src="/Home/Aboutus/anime.png"
+              fill
+              alt="character image"
+              className="object-contain"
+            />
+          </span>
+          The <strong>Computer Society of India (CSI)</strong> is the oldest and
+          largest community of computer professionals, teachers, and students in
+          the country.
+          
+          <span className="inline-block  absolute bottom-0 left-0 pin w-[100px] h-[70px] mx-4 align-middle rounded-full overflow-hidden">
+            <Image
+              src="/Home/Aboutus/anime.png"
+              fill
+              alt="character image"
+              className="object-contain"
+            />
+          </span>
+          It is a place where people who love technology come together to share
+          knowledge, learn new skills, and grow in the field of computers and IT.
 
-//     const container = containerRef.current
+          CSI organizes <span className="font-semibold">workshops, events, and talks</span> 
+          to help students and professionals stay updated with the latest trends,
+          connect with experts, and explore career opportunities.
 
-//     const tl = gsap.timeline({
-//       scrollTrigger: {
-//         trigger: container,
-//         start: 'top top',
-//         end: '+=1000',
-//         scrub: true,
-//         pin: true,
-//       },
-//     })
+          <span className="inline-block relative w-[100px] h-[70px] mx-4 align-middle rounded-full overflow-hidden">
+            <Image
+              src="/Home/Aboutus/anime.png"
+              fill
+              alt="character image"
+              className="object-contain"
+            />
+          </span>
+          In short, CSI is a{" "}
+          <span className="text-blue-600 font-bold">friendly platform</span> for
+          anyone interested in computers to learn, network, and build their
+          future.
+        </p>
+      </div>
 
-//     // Scale container
-//     tl.to(container, {
-//       scale: 1.1,
-//       duration: 3,
-//       ease: 'power2.inOut',
-//     })
+      {/* Next section */}
+      <div className="min-h-screen relative bg-red-100">
+        <div className="absolute w-full h-[10vh] top-0 left-0 z-[9999]">
+          <Image
+            src="/Home/Aboutus/zigzag.png"
+            alt="Hero character"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
 
-//     // Fade out main
-//     const mainElement = container.querySelector('#main')
-//     if (mainElement) {
-//       tl.to(
-//         mainElement,
-//         {
-//           opacity: 0,
-//           duration: 2,
-//           ease: 'power2.inOut',
-//         },
-//         '-=2'
-//       )
-//     }
-
-//     // All walls together
-//     tl.addLabel('wallsOut')
-
-//     const topElement = container.querySelector('#top')
-//     if (topElement) {
-//       tl.to(
-//         topElement,
-//         {
-//           y: -200,
-//           opacity: 0,
-//           duration: 2,
-//         },
-//         'wallsOut'
-//       )
-//     }
-
-//     const sidewallElement = container.querySelector('#sidewall')
-//     if (sidewallElement) {
-//       tl.to(
-//         sidewallElement,
-//         {
-//           x: 200,
-//           opacity: 0,
-//           duration: 2,
-//         },
-//         'wallsOut'
-//       )
-//     }
-
-//     const frontwallElement = container.querySelector('#frontwall')
-//     if (frontwallElement) {
-//       tl.to(
-//         frontwallElement,
-//         {
-//           x: -200,
-//           y: -200,
-//           opacity: 0,
-//           duration: 2,
-//         },
-//         'wallsOut'
-//       )
-//     }
-//   }, { dependencies: [svgLoaded] })
-
-//   return (
-//     <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900">
-//       {/* Background SVG Container */}
-//       <div
-//         ref={containerRef}
-//         id="bg_container"
-//         className="absolute inset-0 z-0 w-full h-full flex items-center justify-center"
-//         style={{
-//           opacity: svgLoaded ? 1 : 0,
-//           transition: 'opacity 0.5s ',
-//         }}
-//         dangerouslySetInnerHTML={{ __html: svgContent }}
-//       />
-
-//       {/* Content overlay */}
-//       <div className="relative z-10 min-h-screen w-full flex items-center justify-center">
-//         <div className="text-center text-white">
-//           <h1 className="text-4xl font-bold mb-4">About Us</h1>
-//           <p className="text-lg opacity-90">Welcome to CSI VIT</p>
-//         </div>
-//       </div>
-      
-//     </div>
-//   )
-// }
-
-// export default AboutUs
+export default AboutUs

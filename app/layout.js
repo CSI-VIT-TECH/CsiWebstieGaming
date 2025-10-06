@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono, Orbitron } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,10 +13,57 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const orbiton=Orbitron({
-  variable:"--font-orbiton",
-  subsets:["latin"]
-})
+const orbiton = Orbitron({
+  variable: "--font-orbiton",
+  subsets: ["latin"]
+});
+
+const tungsten = localFont({
+  src: [
+    {
+      path: './WOFF2/Tungsten-Thin.woff2',
+      weight: '100',
+      style: 'normal',
+    },
+    {
+      path: './WOFF2/Tungsten-ExtraLight.woff2',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: './WOFF2/Tungsten-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './WOFF2/Tungsten-Book.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './WOFF2/Tungsten-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './WOFF2/Tungsten-Semibold.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: './WOFF2/Tungsten-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './WOFF2/Tungsten-Black.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-tungsten',
+  display: 'swap',
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -25,7 +74,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${orbiton.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${orbiton.variable} ${geistMono.variable} ${tungsten.variable} antialiased`}
       >
         {children}
       </body>

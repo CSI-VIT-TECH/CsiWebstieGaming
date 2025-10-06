@@ -19,8 +19,14 @@ const Hero = () => {
             {/* Full background white overlay */}
             <div className='absolute inset-0 bg-white/10 z-0 w-full h-full'></div>
 
-            <div>
-
+            <div className='absolute w-full h-[10vh]  -bottom-1 left-0 z-1000'>
+                <Image
+                 src={'/Home/Aboutus/zigzag.png'}
+                    alt="Hero character"
+                    fill
+                    className="md:object-cover rotate-x-180 object-cover relative "
+                    priority
+                />
             </div>
 
             {/* character */}
