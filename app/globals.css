@@ -10,7 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-orbiton:var(--font-orbiton)
+  --font-orbiton: var(--font-orbiton);
+  --font-tungsten: var(--font-tungsten);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,10 +21,55 @@
   }
 }
 
-body {
- 
+.orbiton {
+  font-family: "Orbiton";
 }
 
-.orbiton{
-  font-family:"Orbiton";
+.tungsten {
+  font-family: var(--font-tungsten);
+}
+
+/* Tungsten font utility classes */
+.font-tungsten {
+  font-family: var(--font-tungsten);
+}
+
+.font-tungsten-thin {
+  font-family: var(--font-tungsten);
+  font-weight: 100;
+}
+
+.font-tungsten-extralight {
+  font-family: var(--font-tungsten);
+  font-weight: 200;
+}
+
+.font-tungsten-light {
+  font-family: var(--font-tungsten);
+  font-weight: 300;
+}
+
+.font-tungsten-book {
+  font-family: var(--font-tungsten);
+  font-weight: 400;
+}
+
+.font-tungsten-medium {
+  font-family: var(--font-tungsten);
+  font-weight: 500;
+}
+
+.font-tungsten-semibold {
+  font-family: var(--font-tungsten);
+  font-weight: 600;
+}
+
+.font-tungsten-bold {
+  font-family: var(--font-tungsten);
+  font-weight: 700;
+}
+
+.font-tungsten-black {
+  font-family: var(--font-tungsten);
+  font-weight: 900;
 }
