@@ -24,6 +24,7 @@
     height: 100svh;
     padding: 2rem;
     overflow: hidden;
+    overflow-x: hidden;
 }
 
 .intro h1,.outro h1{

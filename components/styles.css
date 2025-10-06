@@ -53,14 +53,14 @@ body::before {
 /* Left positioned banner */
 .banner.banner-left {
     width: 50%;
-    left: -800;
+    left: -700px;
     position: absolute;
 }
 
 /* Right positioned banner */
 .banner.banner-right {
     width: 50%;
-    right: -700;
+    right: -700px;
     position: absolute;
 }
 

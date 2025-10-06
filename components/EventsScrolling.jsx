@@ -38,26 +38,26 @@ const EventsScrolling = () => {
 
     // Scatter directions for images
     const scatterDirections = [
-      { x: 1.3, y: 0.7 },
-      { x: -1.5, y: 1.0 },
-      { x: 1.1, y: -1.3 },
-      { x: -1.7, y: -0.8 },
-      { x: 0.8, y: 1.5 },
-      { x: -1.0, y: -1.4 },
-      { x: 1.6, y: 0.3 },
-      { x: -0.7, y: 1.7 },
-      { x: 1.2, y: -1.6 },
-      { x: -1.4, y: 0.9 },
-      { x: 1.8, y: -0.5 },
-      { x: -1.1, y: -1.8 },
-      { x: 0.9, y: 1.8 },
-      { x: -1.9, y: 0.4 },
-      { x: 1.0, y: -1.9 },
-      { x: -0.8, y: 1.9 },
-      { x: 1.7, y: -1.0 },
-      { x: -1.3, y: -1.2 },
-      { x: 0.7, y: 2.0 },
-      { x: 1.25, y: -0.2 },
+      { x: 1, y: 0.0 },
+      { x: -1, y: 0.0 },
+      { x: 1, y: 0.0 },
+      { x: -1, y: 0.0 },
+      { x: 1, y: 0.0 },
+      { x: -1, y: 0.0 },
+      { x: 1, y: 0.0 },
+      { x: -1, y: 0.0 },
+      { x: 1, y: 0.0 },
+      { x: -1, y: 0.0 },
+      { x: 1, y: 0.0 },
+      { x: -1, y: 0.0 },
+      { x: 1, y: 0.0 },
+      { x: -1, y: 0.0 },
+      { x: 1, y: 0.0 },
+      { x: -1, y: 0.0 },
+      { x: 1, y: 0.0 },
+      { x: -1, y: 0.0 },
+      { x: 1, y: 0.0 },
+      { x: 1, y: 0.0 },
     ];
 
     const screenWidth = window.innerWidth;
@@ -67,15 +67,17 @@ const EventsScrolling = () => {
     const scatterMultiplier = isMobile ? 1.4 : 0.5;
 
     // Start + End positions
-    const startPositions = spotlightRefs.current.map(() => ({
-      x: 0,
+    const offsetMultiplier = isMobile ? 50 : 100; // Adjust offset amount
+    
+    const startPositions = scatterDirections.map((dir) => ({
+      x: dir.x * offsetMultiplier, // Slight offset based on end direction
       y: 0,
       z: -1000,
       scale: 0,
     }));
 
     const endPositions = scatterDirections.map((dir) => ({
-      x: dir.x * screenWidth * scatterMultiplier,
+      x: dir.x * screenWidth * scatterMultiplier*1.5,
       y: dir.y * screenHeight * scatterMultiplier,
       z: 2000,
       scale: 1,
@@ -102,25 +104,28 @@ const EventsScrolling = () => {
 onUpdate: (self) => {
   const progress = self.progress;
 
-  // 🔹 Spotlight images
-  spotlightRefs.current.forEach((img, index) => {
-    const staggerDelay = index * (isMobile ? 0.02 : 0.03);
+  spotlightRefs.current.forEach((img, index) => { 
+    const staggerDelay = index * (isMobile ? 0.02 : 0.1);
     const scaleMultiplier = isMobile ? 2.2 : 2;
-    const imageProgress = Math.max(0, (progress - staggerDelay) * (isMobile ? 3 : 4));
+    const imageProgress = Math.max(0, (progress - staggerDelay) * (isMobile ? 2 : 2.5)); // Reduced from 3/4 to 2/2.5
 
     const start = startPositions[index];
     const end = endPositions[index];
+
+    // Calculate opacity - starts at 1, fades to 0 as it moves out
+    const opacity = Math.max(0, 2 - imageProgress * 4);
 
     gsap.set(img, {
       z: gsap.utils.interpolate(start.z, end.z, imageProgress),
       scale: gsap.utils.interpolate(start.scale, end.scale, imageProgress * scaleMultiplier),
       x: gsap.utils.interpolate(start.x, end.x, imageProgress),
       y: gsap.utils.interpolate(start.y, end.y, imageProgress),
+      opacity: opacity,
     });
   });
 
-  // 🔹 Cover image
-  const coverProgress = Math.max(0, (progress - (isMobile ? 0.6 : 0.7)) * (isMobile ? 3 : 4));
+  // Cover image - also reduce speed
+  const coverProgress = Math.max(0, (progress - (isMobile ? 0.6 : 0.7)) * (isMobile ? 2 : 2.5)); // Reduced from 3/4 to 2/2.5
   gsap.set(coverRef.current, {
     z: -1000 + 2000 * coverProgress,
     scale: Math.min(1, coverProgress * 2),
@@ -135,7 +140,7 @@ onUpdate: (self) => {
   }, []);
 
   return (
-    <div>
+    <div style={{ overflowX: 'hidden', width: '100vw' }}>
       {/* <section className={styles.intro}>
         <h1 className={styles.heading}>Vision That Move Beyond The Surface</h1>
       </section> */}
@@ -153,9 +158,7 @@ onUpdate: (self) => {
           ))}
         </div>
 
-        <div ref={coverRef} className={styles["spotlight-cover-img"]}>
-          <img src="/e1.jpg" alt="cover" className="opacity-40" />
-        </div>
+
       </section>
 
 
