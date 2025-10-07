@@ -5,10 +5,9 @@ import Image from 'next/image'
 const Navbar = () => {
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Events', href: '/events' },
     { name: 'Team', href: '/team' },
     { name: 'Developer', href: '/developer' },
+    { name: 'Events', href: '/events' },
   ]
 
   return (
@@ -22,10 +21,10 @@ const Navbar = () => {
             <Link href='/' className='flex items-center space-x-3 group'>
               <div className='relative w-12 h-12 transition-transform duration-300 group-hover:scale-110'>
                 <Image
-                  src='/next.svg'
+                  src='/Login/csivit.png'
                   alt='CSI Logo'
                   fill
-                  className='object-contain filter invert'
+                  className='object-contain'
                   priority
                 />
               </div>
@@ -50,18 +49,16 @@ const Navbar = () => {
 
             {/* Profile Section */}
             <div className='flex items-center space-x-4'>
-              {/* Profile Button */}
-              <button className='flex items-center space-x-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 transition-all duration-300 hover:scale-105'>
-                <div className='relative w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500'>
-                  <Image
-                    src='/Home/Hero/Profile.png'
-                    alt='Profile'
-                    fill
-                    className='object-cover'
-                  />
-                </div>
-                <span className='text-white font-medium hidden md:block'>Profile</span>
-              </button>
+              {/* Login Button */}
+              <Link
+                href='/login'
+                className='flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 hover:from-blue-500/30 hover:to-purple-500/30 backdrop-blur-sm border border-white/30 rounded-full px-6 py-2 transition-all duration-300 hover:scale-105 group'
+              >
+                <span className='text-white font-medium'>Login</span>
+                <svg className='w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' />
+                </svg>
+              </Link>
 
               {/* Mobile Menu Button */}
               <button className='lg:hidden flex flex-col space-y-1.5 w-8 h-8 justify-center items-center bg-white/20 hover:bg-white/30 rounded-lg transition-all duration-300'>

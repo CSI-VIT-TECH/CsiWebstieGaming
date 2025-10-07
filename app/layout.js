@@ -60,10 +60,22 @@ const tungsten = localFont({
       weight: '900',
       style: 'normal',
     },
+   
   ],
   variable: '--font-tungsten',
   display: 'swap',
 });
+
+const minercraft=localFont({
+  src:[
+     {
+      path:'./WOFF2/Minecrafter.Reg.ttf',
+      style:"normal"
+    }
+  ],
+   variable: '--font-minercraft',
+  display: 'swap',
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -74,7 +86,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${orbiton.variable} ${geistMono.variable} ${tungsten.variable} antialiased`}
+        className={`${geistSans.variable} ${orbiton.variable} ${geistMono.variable} ${minercraft.variable}  ${tungsten.variable} antialiased`}
       >
         {children}
       </body>
