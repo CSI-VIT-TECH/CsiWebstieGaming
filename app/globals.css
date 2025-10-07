@@ -12,6 +12,7 @@
   --font-mono: var(--font-geist-mono);
   --font-orbiton: var(--font-orbiton);
   --font-tungsten: var(--font-tungsten);
+  --font-minercraft:var(--font-minercraft)
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,9 +21,19 @@
     --foreground: #ededed;
   }
 }
-
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 .orbiton {
   font-family: "Orbiton";
+}
+
+.minercraft{
+  font-family: var(--font-minercraft);
 }
 
 .tungsten {
