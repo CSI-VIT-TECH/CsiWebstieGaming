@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Navbar = () => {
   const navLinks = [
-    { name: 'Home', href: '/' },
+    { name: 'Home', href: '/home' },
     { name: 'Team', href: '/team' },
     { name: 'Developer', href: '/developer' },
     { name: 'Events', href: '/events' },
