@@ -8,6 +8,7 @@ const Navbar = () => {
     { name: 'Team', href: '/team' },
     { name: 'Developer', href: '/developer' },
     { name: 'Events', href: '/events' },
+    { name: 'Profile', href: '/profile' },
   ]
 
   return (
