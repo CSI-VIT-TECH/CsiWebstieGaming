@@ -1,24 +1,5 @@
-
-
-import AboutUs from "@/components/Home/AboutUs";
-import Hero from "@/components/Home/Hero";
-import HeroScale from "@/components/Home/HeroScale";
-import Navbar from "@/components/Home/Navbar";
-import Image from "next/image";
-import LenisClient from "@/components/LenisClient";
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  // Lenis is initialized in the client-only component below
-
-  return (
-    <>
-      <div>
-        {/* <LenisClient /> */}
-        <Navbar />
-        {/* <Hero/>
-        <AboutUs/> */}
-        {/* <HeroScale/> */}
-      </div>
-    </>
-  );
+  redirect('/home');
 }

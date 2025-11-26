@@ -7,6 +7,9 @@ import Navbar from '@/components/Home/Navbar'
 import { FiUser } from 'react-icons/fi'
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { HiInformationCircle } from "react-icons/hi"
+import { RiInstagramFill } from "react-icons/ri";
+import { useRouter } from 'next/navigation'
+
 
 const Page = () => {
   const [selectedDomain, setSelectedDomain] = useState(0);
@@ -17,6 +20,8 @@ const Page = () => {
   const isDown = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
+
+  const router=useRouter()
 
   // Handle scroll progress
   useEffect(() => {
@@ -86,7 +91,7 @@ const Page = () => {
   }, []);
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="min-h-screen relative bg-[url('/Events/Eventsback.png')] bg-no-repeat bg-cover bg-center opacity-85">
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
@@ -101,7 +106,9 @@ const Page = () => {
         {/* Main content */}
         <div className="absolute inset-0 py-9 px-6 text-white z-10">
           {/* Title */}
-          <div className="text-2xl hidden md:block text-center mb-8 font-tungsten-bold w-[200px] md:w-[300px] md:text-[3.4rem] font-semibold bg-[#6f6f6f] px-8 max-w-5xl py-4 transform transition-all duration-700 ease-out animate-fade-in-down hover:scale-105 hover:bg-[#5f5f5f]">
+          <div onClick={()=>router.push('/home')} className="text-2xl hidden md:block relative z-2  text-center mb-8 font-tungsten-bold w-[200px] md:w-[300px] md:text-[3.4rem] font-semibold bg-[url('/team-bg-image.webp')] border  bg-cover bg-center px-8 max-w-5xl py-4 transform transition-all duration-700 ease-out animate-fade-in-down hover:scale-105 hover:brightness-110">
+          
+            <div className='bg-black/40 inset-0 absolute z-0'/>
             CSI-VIT
           </div>
 
@@ -194,7 +201,7 @@ const Page = () => {
                   { label: "Info", icon: <HiInformationCircle size={30} />, link: "https://example.com/info" },
                   { label: "Github", icon: <FaGithub size={30} />, link: "https://github.com/jeetm" },
                   { label: "Linkedin", icon: <FaLinkedin size={30} />, link: "https://linkedin.com/in/jeetm" },
-                  { label: "Instagram", icon: <FaInstagram size={30} />, link: "https://instagram.com/jeetm" },
+                  { label: "Instagram", icon: <RiInstagramFill size={30} />, link: "https://instagram.com/jeetm" },
                 ].map((item, i) => (
                   <a
                     key={i}
@@ -227,7 +234,7 @@ const Page = () => {
 
         {/* Bottom position card */}
         <div className='absolute hidden md:flex bottom-5 w-full  items-center justify-center font-tungsten-bold text-white px-4 py-2 text-center animate-fade-in-up' style={{ animationDelay: '2400ms' }}>
-          <div className='bg-gradient-to-b from-[#D13844] to-[#FF7777] text-[3rem] px-12 rounded shadow-2xl drop-shadow-2xl transition-all duration-500 ease-out hover:scale-105 hover:from-[#FF4455] hover:to-[#FF8888] transform hover:-translate-y-1'>
+          <div className='bg-gradient-to-b from-[#D13844] to-[#FF7777] text-[3rem]  px-12 rounded shadow-2xl drop-shadow-2xl transition-all duration-500 ease-out hover:scale-105 hover:from-[#FF4455] hover:to-[#FF8888] transform hover:-translate-y-1'>
             {domains[selectedDomain].members[memberSelected].position}
           </div>
         </div>
