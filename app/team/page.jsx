@@ -96,17 +96,18 @@ const Page = () => {
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70"></div>
 
-        <div className="absolute left-1/2  w-[90vw] md:w-[45vw] bottom-0 transform -translate-x-1/2 h-[90vh]">
+        <div className="fixed  left-1/2  w-[100vw]  bottom-0 transform -translate-x-1/2 h-[90vh]">
           <Image
             src={'/Events/jeet.png'}
             fill
+            className='md:object-contain'
           />
         </div>
 
         {/* Main content */}
-        <div className="absolute inset-0 py-9 px-6 text-white z-10">
+        <div className="absolute inset-0 py-9 px-6  text-white z-10">
           {/* Title */}
-          <div onClick={()=>router.push('/home')} className="text-2xl hidden md:block relative z-2  text-center mb-8 font-tungsten-bold w-[200px] md:w-[300px] md:text-[3.4rem] font-semibold bg-[url('/team-bg-image.webp')] border  bg-cover bg-center px-8 max-w-5xl py-4 transform transition-all duration-700 ease-out animate-fade-in-down hover:scale-105 hover:brightness-110">
+          <div onClick={()=>router.push('/home')} className="text-2xl ml-[13%] hidden md:block relative z-2  text-center mb-8 font-tungsten-bold w-[200px] md:w-[300px] md:text-[3.4rem] font-semibold bg-[url('/team-bg-image.webp')] border  bg-cover bg-center px-8 max-w-5xl py-4 transform transition-all duration-700 ease-out animate-fade-in-down hover:scale-105 hover:brightness-110">
           
             <div className='bg-black/40 inset-0 absolute z-0'/>
             CSI-VIT
@@ -114,7 +115,7 @@ const Page = () => {
 
           <div className="flex justify-between">
             {/* Left section */}
-            <div className="text-center space-y-8 animate-fade-in-left">
+            <div className="text-center md:ml-[13%] space-y-8 animate-fade-in-left">
 
               {/* Scrollable row with grab scroll */}
               <div className="relative w-[40%] md:w-[50%]">
@@ -185,7 +186,7 @@ const Page = () => {
             </div>
 
             {/* Right section */}
-            <div className="hidden md:block w-[300px] mr-10 animate-fade-in-right">
+            <div className="hidden md:block w-[300px] mr-[10%] animate-fade-in-right">
               <div className="transition-all duration-500 ease-out">
                 <h2 className="-mb-7 transition-all duration-300 hover:text-orange-300">
                   {domains[selectedDomain].name}
