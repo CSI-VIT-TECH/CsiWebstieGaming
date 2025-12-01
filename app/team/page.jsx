@@ -156,15 +156,15 @@ const Page = () => {
                 </div>
 
               </div>
-              {/*Mobile side section*/}
-              <div className=" absolute max-w-[270px] text-left left-0 flex flex-col justify-start md:hidden transition-all duration-500 ease-out">
+              {/* Mobile side section */}
+              <div className="absolute max-w-[270px] text-left left-0 flex flex-col justify-start md:hidden transition-all duration-500 ease-out">
                 <h2 className="-mb-3 mr-10 left-0 line-clamp-1 transition-all text-xl duration-300 hover:text-orange-300">
                   {domains[selectedDomain].name}
                 </h2>
                 <h1 className="font-tungsten-bold mr-10 text-[3rem] transition-all duration-500 ease-out hover:text-orange-300 hover:scale-105 transform">
                   {domains[selectedDomain].members[memberSelected].name}
                 </h1>
-                <p>
+                <p className="mt-2">
                   {domains[selectedDomain].members[memberSelected].description}
                 </p>
               </div>
